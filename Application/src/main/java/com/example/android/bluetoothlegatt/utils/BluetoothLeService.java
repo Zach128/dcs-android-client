@@ -16,6 +16,9 @@
 
 package com.example.android.bluetoothlegatt.utils;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -29,9 +32,13 @@ import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.example.android.bluetoothlegatt.R;
 import com.example.android.bluetoothlegatt.models.SampleGattAttributes;
 
 import java.util.List;
@@ -49,10 +56,13 @@ public class BluetoothLeService extends Service {
     private String mBluetoothDeviceAddress;
     private BluetoothGatt mBluetoothGatt;
     private int mConnectionState = STATE_DISCONNECTED;
+    private Handler mHandler = new Handler();
 
     private static final int STATE_DISCONNECTED = 0;
     private static final int STATE_CONNECTING = 1;
     private static final int STATE_CONNECTED = 2;
+
+    private static final int ONGOING_NOTIFICATION_ID = 1337;
 
     public final static String ACTION_GATT_CONNECTED =
             "com.example.bluetooth.le.ACTION_GATT_CONNECTED";
@@ -387,6 +397,17 @@ public class BluetoothLeService extends Service {
         if(mBluetoothGatt.readCharacteristic(mIacCharacteristic) == false){
             Log.w(TAG, "Failed to read CIC characteristic");
         }
+    }
+
+    public void runInForeground() {
+        Intent notificationIntent = new Intent(this, BluetoothLeService.class);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, notificationIntent, 0);
+
+        Notification notification = BleForegroundService.buildForegroundNotification(this, pendingIntent);
+
+        startForeground(ONGOING_NOTIFICATION_ID, notification);
+
     }
 
 }

@@ -14,7 +14,9 @@ public class DcsParser {
 
     public static void parseInstructions(String instructions, String arguments) {
 
-        if(instructions.equals("ms")) {
+        String[] insArray = instructions.split(",");
+
+        if(insArray[1].equals("ms")) {
             MasterAudioController mac = MasterAudioController.getInstance();
             mac.muteAllAudio();
             Log.d(TAG, "Successfully muted audio");

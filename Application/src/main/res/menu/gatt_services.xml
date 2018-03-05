@@ -18,6 +18,10 @@
           android:checkable="false"
           android:orderInCategory="1"
           android:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_back"
+        android:orderInCategory="102"
+        android:title="@string/menu_back_to_prev" />
     <item android:id="@+id/menu_connect"
           android:title="@string/menu_connect"
           android:orderInCategory="100"

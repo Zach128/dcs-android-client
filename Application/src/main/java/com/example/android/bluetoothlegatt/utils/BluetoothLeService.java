@@ -161,7 +161,7 @@ public class BluetoothLeService extends Service {
         if(UUID_CONTROL_INSTRUCTION_CHARACTERISTIC.equals(characteristic.getUuid())) {
             String data = characteristic.getStringValue(0);
             Log.d(TAG, "Received instructions: " + data);
-            DcsParser.parseInstructions(data, "");
+            //DcsParser.parseInstructions(data, "");
         } else if(UUID_INSTRUCTION_ARGUMENT_CHARACTERISTIC.equals(characteristic.getUuid())) {
             String data = characteristic.getStringValue(0);
             Log.d(TAG, "Received instruction arguments: " + data);

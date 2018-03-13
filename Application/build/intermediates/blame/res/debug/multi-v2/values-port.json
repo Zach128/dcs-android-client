@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

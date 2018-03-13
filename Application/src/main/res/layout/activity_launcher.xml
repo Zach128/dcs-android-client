@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.bluetoothlegatt.LauncherActivity">
+
+    <Button
+        android:id="@+id/btn_start_dcs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="181dp"
+        android:text="Start DCS service"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_view_devices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="68dp"
+        android:text="View devices"
+        app:layout_constraintStart_toStartOf="@+id/btn_start_dcs"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_dcs" />
+</android.support.constraint.ConstraintLayout>

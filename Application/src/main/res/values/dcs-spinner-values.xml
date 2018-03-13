@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dcs_ins_array">
+        <item>ms: Mute Sound</item>
+        <item>ums: Unmute Sound</item>
+        <item>sdwf: Shut Down WiFi</item>
+        <item>actwf: Activate WiFi</item>
+        <item>curl: Open URL</item>
+    </string-array>
+</resources>

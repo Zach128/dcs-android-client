@@ -15,7 +15,6 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
@@ -34,7 +33,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.android.bluetoothlegatt.LauncherActivity;
+import com.example.android.bluetoothlegatt.activities.LauncherActivity;
 import com.example.android.bluetoothlegatt.R;
 import com.example.android.bluetoothlegatt.models.SampleGattAttributes;
 

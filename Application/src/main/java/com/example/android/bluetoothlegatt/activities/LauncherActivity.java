@@ -1,4 +1,4 @@
-package com.example.android.bluetoothlegatt;
+package com.example.android.bluetoothlegatt.activities;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
@@ -12,8 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.android.bluetoothlegatt.activities.DeviceEditorActivity;
-import com.example.android.bluetoothlegatt.activities.DeviceScanActivity;
+import com.example.android.bluetoothlegatt.R;
 import com.example.android.bluetoothlegatt.utils.BleForegroundService;
 
 public class LauncherActivity extends Activity {

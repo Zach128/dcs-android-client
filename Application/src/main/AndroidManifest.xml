@@ -52,7 +52,7 @@
         <service android:name=".utils.BleForegroundService" />
 
         <activity
-            android:name=".LauncherActivity"
+            android:name=".activities.LauncherActivity"
             android:label="@string/title_activity_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

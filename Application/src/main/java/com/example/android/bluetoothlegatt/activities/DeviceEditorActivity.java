@@ -15,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.bluetoothlegatt.R;
-import com.example.android.bluetoothlegatt.models.DialogResponse;
+import com.example.android.bluetoothlegatt.com.example.android.bluetoothlegatt.contextcontrollers.WifiController;
+import com.example.android.bluetoothlegatt.models.UrlDialogResponse;
+import com.example.android.bluetoothlegatt.models.WifiDialogResponse;
 import com.example.android.bluetoothlegatt.utils.DcsParser;
 
 public class DeviceEditorActivity extends Activity implements AdapterView.OnItemSelectedListener {
@@ -29,8 +31,10 @@ public class DeviceEditorActivity extends Activity implements AdapterView.OnItem
     private TextView mArgumentPreview;
     private Button mPopInstructionBtn;
     private Button mCommitCharsBtn;
+    private Button mPopAndProcessBtn;
 
     private UrlPrompter mUrlPrompt;
+    private WifiPrompter mWifiPrompt;
     private DcsParser mDcsParser;
 
     private boolean mSpinnerInitialised = false;
@@ -53,8 +57,10 @@ public class DeviceEditorActivity extends Activity implements AdapterView.OnItem
         mArgumentPreview = (TextView) findViewById(R.id.txt_iac_preview);
         mPopInstructionBtn = (Button) findViewById(R.id.btn_pop_instruction);
         mCommitCharsBtn = (Button) findViewById(R.id.btn_commit_chars);
+        mPopAndProcessBtn = (Button) findViewById(R.id.btn_pop_and_process);
 
-        mDcsParser = new DcsParser();
+        mDcsParser = new DcsParser(DeviceEditorActivity.this)
+                .setWifiController(new WifiController(DeviceEditorActivity.this));
 
         mPopInstructionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +68,19 @@ public class DeviceEditorActivity extends Activity implements AdapterView.OnItem
                 String removedInstruction = mDcsParser.popInstruction();
                 if(removedInstruction.equals("curl")) {
                     mDcsParser.popArgument();
+                } else if(removedInstruction.equals("conwf")) {
+                    mDcsParser.popArgument();
+                    mDcsParser.popArgument();
+                    mDcsParser.popArgument();
                 }
+                updatePreview();
+            }
+        });
+
+        mPopAndProcessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDcsParser.processTopInstruction();
                 updatePreview();
             }
         });
@@ -100,8 +118,8 @@ public class DeviceEditorActivity extends Activity implements AdapterView.OnItem
                 break;
             case "curl":
                 mUrlPrompt = new UrlPrompter(this);
-                mUrlPrompt.setCancelClickListener(mUrlPromptListener);
-                mUrlPrompt.showDialog(new DialogResponse() {
+                mUrlPrompt.setCancelClickListener(mPromptCancelListener);
+                mUrlPrompt.showDialog(new UrlDialogResponse() {
                     @Override
                     public void getUrlResponse(EditText textField) {
                         String result = textField.getText().toString();
@@ -116,6 +134,37 @@ public class DeviceEditorActivity extends Activity implements AdapterView.OnItem
                     }
                 });
                 break;
+
+            case "conwf":
+                mWifiPrompt = new WifiPrompter(this);
+                mWifiPrompt.setCancelClickListener(mPromptCancelListener);
+                mWifiPrompt.showDialog(new WifiDialogResponse() {
+                    @Override
+                    public void getDialogResponse(EditText ssidText, EditText passText, String networkType) {
+                        String ssid = ssidText.getText().toString();
+                        String pass = passText.getText().toString();
+
+                        //Check that valid input is obtained
+                        if(TextUtils.isEmpty(ssid) || (!networkType.equals("Open") && TextUtils.isEmpty(pass))) {
+                            return;
+                        }
+
+                        mDcsParser.pushInstruction("conwf");
+                        mDcsParser.pushArgument(ssid);
+
+                        if(networkType.equals("Open")) {
+                            mDcsParser.pushArgument("<n>");
+                        } else {
+                            mDcsParser.pushArgument(pass);
+                        }
+
+                        mDcsParser.pushArgument(networkType);
+
+                        updatePreview();
+                        Toast.makeText(DeviceEditorActivity.this, "WiFi network added " + ssid, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
         }
 
     }
@@ -126,11 +175,11 @@ public class DeviceEditorActivity extends Activity implements AdapterView.OnItem
     }
 
     private void updatePreview() {
-        mInstructionPreview.setText("Current instructions: " + mDcsParser.instructionsToString());
-        mArgumentPreview.setText("Current arguments: " + mDcsParser.argumentsToString());
+        mInstructionPreview.setText("Current instructions: ".concat(mDcsParser.instructionsToString()));
+        mArgumentPreview.setText("Current arguments: ".concat(mDcsParser.argumentsToString()));
     }
 
-    private DialogInterface.OnClickListener mUrlPromptListener = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener mPromptCancelListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             Log.d(TAG, "INFO: Cancelling URL dialog");

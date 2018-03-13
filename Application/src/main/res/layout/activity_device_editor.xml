@@ -33,7 +33,8 @@
         android:id="@+id/btn_pop_instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="212dp"
+        android:layout_marginTop="12dp"
         android:text="Pop Instruction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/instruction_spinner" />
@@ -66,5 +67,14 @@
         app:layout_constraintBottom_toTopOf="@+id/txt_cic_preview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_pop_and_process"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="Pop &amp; Process"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_pop_instruction"
+        app:layout_constraintStart_toEndOf="@+id/btn_pop_instruction" />
 
 </android.support.constraint.ConstraintLayout>

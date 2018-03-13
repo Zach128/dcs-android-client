@@ -1,8 +1,11 @@
 package com.example.android.bluetoothlegatt.utils;
 
+import android.content.Context;
+import android.net.wifi.WifiConfiguration;
 import android.util.Log;
 
 import com.example.android.bluetoothlegatt.com.example.android.bluetoothlegatt.contextcontrollers.MasterAudioController;
+import com.example.android.bluetoothlegatt.com.example.android.bluetoothlegatt.contextcontrollers.WifiController;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,15 +24,17 @@ public class DcsParser {
     public static final String BEGIN_ARRAY = "[";
     public static final String END_ARRAY = "]";
 
-    public static final Set<String> SUPPORTED_INSTRUCTIONS = new HashSet<String>();
+    private WifiController mWifiController;
+    private MasterAudioController mAudioController;
 
     private LinkedList<String> mInstructions = null;
     private LinkedList<String> mArguments = null;
 
-    public DcsParser() {
+    public DcsParser(Context context) {
         mInstructions = new LinkedList<String>();
         mArguments = new LinkedList<String>();
 
+        mAudioController = new MasterAudioController(context);
     }
 
     public void pushInstruction(String instruction) {
@@ -69,14 +74,29 @@ public class DcsParser {
 
     private void processInstruction(String instruction) {
         if(instruction.equals("ms")) {
-            MasterAudioController mac = MasterAudioController.getInstance();
-            mac.muteAllAudio();
+            mAudioController.muteAllAudio();
             Log.d(TAG, "Successfully muted audio");
         } else if(instruction.equals("ums")){
-            MasterAudioController mac = MasterAudioController.getInstance();
-            mac.unmuteAllAudio();
+            mAudioController.unmuteAllAudio();
             Log.d(TAG, "Successfully unmuted audio");
+        } else if(instruction.equals("actwf")) {
+            mWifiController.enableWifi();
+        } else if(instruction.equals("sdwf")) {
+            mWifiController.disableWifi();
+        } else if(instruction.equals("conwf")) {
+
+            String networkType = popArgument();
+            String pass = popArgument();
+            String ssid = popArgument();
+
+            Log.d(TAG, "ssid: " + ssid + " net type " + networkType + " pass " + pass);
+
+            mWifiController.connectToNetwork(ssid, pass, networkType);
         }
+    }
+
+    public void processTopInstruction() {
+        processInstruction(mInstructions.pop());
     }
 
     public String instructionsToString() {
@@ -107,6 +127,11 @@ public class DcsParser {
         builder.append(END_ARRAY);
 
         return builder.toString();
+    }
+
+    public DcsParser setWifiController(WifiController controller) {
+        this.mWifiController = controller;
+        return this;
     }
 
 }

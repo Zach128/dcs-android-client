@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="wifi_dialog_array">
+        <item>Open</item>
+        <item>WEP</item>
+        <item>WPA</item>
+    </string-array>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wifi_dialog_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/wifi_dialog_ssid_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SSID: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/wifi_dialog_ssid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Wifi SSID">
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/wifi_dialog_networktype_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select network security: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/wifi_dialog_network_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/wifi_dialog_pass_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="password: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/wifi_dialog_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Leave empty if open">
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>

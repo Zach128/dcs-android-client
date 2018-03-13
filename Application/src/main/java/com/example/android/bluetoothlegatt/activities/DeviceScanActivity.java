@@ -66,8 +66,7 @@ public class DeviceScanActivity extends ListActivity {
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
 
-        MasterAudioController mac = MasterAudioController.getInstance();
-        mac.initAudioManager(this);
+        MasterAudioController mac = new MasterAudioController(DeviceScanActivity.this);
         if(mac.getmAudioManager() != null)
             Log.d("DeviceScanActivity", "Initialised AudioManager in MasterAudioController");
 

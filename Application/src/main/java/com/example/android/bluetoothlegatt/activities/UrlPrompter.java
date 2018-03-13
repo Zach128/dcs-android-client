@@ -6,16 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.bluetoothlegatt.R;
-import com.example.android.bluetoothlegatt.models.DialogResponse;
+import com.example.android.bluetoothlegatt.models.UrlDialogResponse;
 
 public class UrlPrompter {
 
     Context context;
-    private Button button;
     private String mResult;
     private DialogInterface.OnClickListener mCancelClickListener;
 
@@ -39,7 +37,7 @@ public class UrlPrompter {
         return mResult;
     }
 
-    public void showDialog(final DialogResponse response) {
+    public void showDialog(final UrlDialogResponse response) {
 
         // get url_dialog.xml view
         LayoutInflater li = LayoutInflater.from(context);

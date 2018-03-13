@@ -5,6 +5,7 @@
         <item>ums: Unmute Sound</item>
         <item>sdwf: Shut Down WiFi</item>
         <item>actwf: Activate WiFi</item>
+        <item>conwf: Connect to WiFi network</item>
         <item>curl: Open URL</item>
     </string-array>
 </resources>

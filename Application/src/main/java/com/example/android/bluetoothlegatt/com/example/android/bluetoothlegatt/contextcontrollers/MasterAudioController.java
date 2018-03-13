@@ -10,13 +10,8 @@ import android.os.Build;
  */
 
 public class MasterAudioController {
-    private static final MasterAudioController ourInstance = new MasterAudioController();
 
     private AudioManager mAudioManager = null;
-
-    public static MasterAudioController getInstance() {
-        return ourInstance;
-    }
 
     public void muteAllAudio() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -50,11 +45,8 @@ public class MasterAudioController {
         }
     }
 
-    private MasterAudioController() {
-    }
-
-    public void initAudioManager(Activity activity) {
-        this.mAudioManager = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
+    public MasterAudioController(Context context) {
+        this.mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
     public AudioManager getmAudioManager() {

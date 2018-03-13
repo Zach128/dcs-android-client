@@ -84,6 +84,10 @@
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\f29bbf8da72227b561b3d23dead83a18\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
+        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout_wifi_dialog.xml.flat",
+        "source": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\src\\main\\res\\layout\\wifi_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
@@ -130,10 +134,6 @@
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_btn_colored_material.xml.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-v21\\abc_btn_colored_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\color_abc_btn_colored_borderless_text_material.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_icon.xml.flat",
@@ -486,10 +486,6 @@
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
-    },
-    {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\f29bbf8da72227b561b3d23dead83a18\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout_gatt_services_characteristics.xml.flat",
@@ -920,10 +916,6 @@
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\f29bbf8da72227b561b3d23dead83a18\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\f29bbf8da72227b561b3d23dead83a18\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
@@ -1252,10 +1244,6 @@
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_colored_material.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable\\abc_btn_colored_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tile.9.png.flat",
         "source": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\src\\main\\res\\drawable-hdpi\\tile.9.png"
     },
@@ -1270,10 +1258,6 @@
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-xxhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable_abc_edit_text_material.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -1348,20 +1332,12 @@
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\f29bbf8da72227b561b3d23dead83a18\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-xxhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\3b491b520be4189cbc1a0fd3e864e10f\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
-        "source": "C:\\Users\\Cortesza\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\f29bbf8da72227b561b3d23dead83a18\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\Cortesza\\My Code Projects\\android-studio-projects\\Android-DeCS\\Application\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_edittext.xml.flat",

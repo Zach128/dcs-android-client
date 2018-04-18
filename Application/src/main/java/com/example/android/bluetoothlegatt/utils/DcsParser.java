@@ -1,6 +1,10 @@
 package com.example.android.bluetoothlegatt.utils;
 
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.util.Log;
 
@@ -8,6 +12,7 @@ import com.example.android.bluetoothlegatt.com.example.android.bluetoothlegatt.c
 import com.example.android.bluetoothlegatt.com.example.android.bluetoothlegatt.contextcontrollers.WifiController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +29,8 @@ public class DcsParser {
     public static final String BEGIN_ARRAY = "[";
     public static final String END_ARRAY = "]";
 
+    private Context mContext;
+
     private WifiController mWifiController;
     private MasterAudioController mAudioController;
 
@@ -31,6 +38,9 @@ public class DcsParser {
     private LinkedList<String> mArguments = null;
 
     public DcsParser(Context context) {
+
+        mContext = context;
+
         mInstructions = new LinkedList<String>();
         mArguments = new LinkedList<String>();
 
@@ -73,6 +83,7 @@ public class DcsParser {
     }
 
     private void processInstruction(String instruction) {
+
         if(instruction.equals("ms")) {
             mAudioController.muteAllAudio();
             Log.d(TAG, "Successfully muted audio");
@@ -81,18 +92,38 @@ public class DcsParser {
             Log.d(TAG, "Successfully unmuted audio");
         } else if(instruction.equals("actwf")) {
             mWifiController.enableWifi();
+            Log.d(TAG, "Enabled Wi-fi");
         } else if(instruction.equals("sdwf")) {
             mWifiController.disableWifi();
+            Log.d(TAG, "Disabled Wi-fi");
         } else if(instruction.equals("conwf")) {
 
             String networkType = popArgument();
             String pass = popArgument();
             String ssid = popArgument();
 
-            Log.d(TAG, "ssid: " + ssid + " net type " + networkType + " pass " + pass);
+            Log.d(TAG, "Connecting to Wifi " + ssid);
 
             mWifiController.connectToNetwork(ssid, pass, networkType);
+        } else if(instruction.equals("curl")) {
+            String url = popArgument();
+            Log.d(TAG, "Connecting to URL " + url);
+
+            try {
+                Intent i = new Intent("android.intent.action.MAIN");
+                i.setComponent(ComponentName.unflattenFromString("com.android.chrome/com.android.chrome.Main"));
+                i.addCategory("android.intent.category.LAUNCHER");
+                i.setData(Uri.parse(url));
+                mContext.startActivity(i);
+            }
+            catch(ActivityNotFoundException e) {
+                // Chrome is not installed
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                mContext.startActivity(i);
+            }
+
         }
+
     }
 
     public void processTopInstruction() {
@@ -112,6 +143,19 @@ public class DcsParser {
         builder.append(END_ARRAY);
 
         return builder.toString();
+    }
+
+    public void stringToInstructions(String insString, String argString) {
+
+        String insBuffer = insString.substring(insString.indexOf(BEGIN_ARRAY) + 1, insString.indexOf(END_ARRAY));
+        String argBuffer = argString.substring(argString.indexOf(BEGIN_ARRAY) + 1, argString.indexOf(END_ARRAY));
+
+        String[] insArray = insBuffer.split(DELIMETER);
+        String[] argArray = argBuffer.split(DELIMETER);
+
+        mInstructions = new LinkedList<String>(Arrays.asList(insArray));
+        mArguments = new LinkedList<String>(Arrays.asList(argArray));
+
     }
 
     public String argumentsToString() {

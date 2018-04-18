@@ -79,6 +79,8 @@ public class BleForegroundService extends Service {
     private static final int NOTIFICATION_ID = 1337;
     public static int mStartId = 0;
 
+    private int currentScanCycle = 0;
+    private boolean continueScanning = true;
     private boolean mScanning = false;
 
     private BluetoothManager mBluetoothManager;
@@ -97,6 +99,21 @@ public class BleForegroundService extends Service {
 
     private Handler mUIHandler = new Handler(Looper.getMainLooper());
     private Handler mHandler = new Handler();
+
+    private Runnable mScannerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            //Scan interval complete
+            mScanning = false;
+            currentScanCycle++;
+            if(currentScanCycle >= 5 && continueScanning) {
+                continueScanning = false;
+                mBluetoothAdapter.getBluetoothLeScanner().stopScan(mLeScanCallback);
+            } else {
+                startServiceRunnable();
+            }
+        }
+    };
 
     //region *****HANDLER*****
     public class LocalBinder extends Binder {
@@ -358,20 +375,16 @@ public class BleForegroundService extends Service {
     }
 
     private void scanLeDevice(final boolean enable) {
+        //Begin scan
         if (enable) {
             // Stops scanning after a pre-defined scan period.
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mScanning = false;
+            startServiceRunnable();
 
-                    mBluetoothAdapter.getBluetoothLeScanner().stopScan(mLeScanCallback);
-                }
-            }, SCAN_PERIOD);
-
+            Log.d(TAG, "Starting BLE scan");
             mScanning = true;
             mBluetoothAdapter.getBluetoothLeScanner().startScan(mScanFilters, mScanSettings, mLeScanCallback);
         } else {
+            Log.d(TAG, "Stopping BLE scan");
             mScanning = false;
             mBluetoothAdapter.getBluetoothLeScanner().stopScan(mLeScanCallback);
         }
@@ -500,6 +513,7 @@ public class BleForegroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        Log.d(TAG, "Starting in foreground");
         runInForeground();
 
         beginMainCycle();
@@ -543,5 +557,9 @@ public class BleForegroundService extends Service {
 
         }
     };
+
+    private void startServiceRunnable() {
+        mHandler.postDelayed(mScannerRunnable, R.integer.BLE_Service_discover_interval);
+    }
 
 }
